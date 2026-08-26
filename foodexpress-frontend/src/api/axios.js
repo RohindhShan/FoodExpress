@@ -1,7 +1,12 @@
 import axios from "axios";
 
+// Automatically uses Vercel environment variable or falls back to live Render backend
+const baseURL = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL.replace(/\/+$/, "")}/api/`
+  : "https://foodexpress-backend-rki2.onrender.com/api/";
+
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/",
+  baseURL: baseURL,
   headers: {
     "Content-Type": "application/json",
   },
